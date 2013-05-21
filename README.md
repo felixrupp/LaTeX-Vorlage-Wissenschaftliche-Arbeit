@@ -1,6 +1,6 @@
 
 #Willkommen zum ReadMe der LaTeX-Vorlage für wissenschaftliche Arbeiten.
-*Version 1.1 vom 06.07.2012*
+*Version 1.2 vom 21.05.2013*
 
 *Vorab: Diese Vorlage basiert auf einer Vorlage von [Stefan Macke](http://blog.stefan-macke.com/2009/04/24/latex-vorlage-fuer-meine-masterarbeit-an-der-ohm-hochschule-nuernberg/). Vielen Dank für die großartige Arbeit!*
 

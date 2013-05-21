@@ -1308,7 +1308,7 @@ FUNCTION {article}
   format.online.lastcheck
   doi set.period.dash.check
   urn set.period.dash.check
-  format.doi.urn output
+  format.doi output
   issn set.period.dash.check
   format.isbn.issn output
   note set.period.dash.check
@@ -1374,7 +1374,7 @@ FUNCTION {booklet}
   format.digital.type output
   doi set.period.dash.check
   urn set.period.dash.check
-  format.doi.urn output
+  format.doi output
   note set.period.dash.check
   note output
   format.isbn.issn output
@@ -1437,7 +1437,7 @@ FUNCTION {incollection}
       format.series.number.din output
       doi set.period.dash.check
       urn set.period.dash.check
-      format.doi.urn output
+      format.doi output
       isbn set.period.dash.check
       issn set.period.dash.check
       format.isbn.issn output
@@ -1552,7 +1552,7 @@ FUNCTION {mastersthesis}
   format.online.lastcheck
   doi set.period.dash.check
   urn set.period.dash.check
-  format.doi.urn output
+  format.doi output
   pages empty$
     { skip$ }
     { pages set.period.dash.check
@@ -1580,7 +1580,7 @@ FUNCTION {phdthesis} %%  {mastersthesis}% ist identisch bis auf Standardwert, s.
   format.online.lastcheck
   doi set.period.dash.check
   urn set.period.dash.check
-  format.doi.urn output
+  format.doi output
   pages empty$
     { skip$ }
     { pages set.period.dash.check
