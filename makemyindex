@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# = 1 -a -f $1.tex ]
+then
+	makeindex $1.nlo -s nomencl.ist -o $1.nls
+else
+	echo "Aufruf: <makemyindex NameDerRootDatei>"
+fi
+

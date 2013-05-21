@@ -1,0 +1,160 @@
+% !TEX encoding = UTF-8 Unicode
+
+% -------------------------------------------------------------------------------------------------------------------
+%	Formatvorlage für wissenschaftliche Arbeiten (Diplomarbeit, Bachelorarbeit, Masterarbeit)
+% -------------------------------------------------------------------------------------------------------------------
+%	ursprünglich erstellt von Stefan Macke, 24.04.2009
+%	http://blog.stefan-macke.de
+%
+%	erweitert von Felix Rupp
+%	http://www.felixrupp.com/
+%
+%	Version: 1.1
+%	Datum: 06.07.2012
+
+
+% Dokumentenkopf ---------------------------------------------------------------------------------------------
+%   Diese Vorlage basiert auf "scrreprt" aus dem koma-script.
+% -------------------------------------------------------------------------------------------------------------------
+\documentclass[
+    12pt, % Schriftgröße
+    DIV10, % Änderung der Größe des Satzspiegels (bedruckbarer Bereich einer Seite), nur in Verbindung mit koma-script verwendbar
+    ngerman, % für Umlaute, Silbentrennung etc.
+    a4paper, % Papierformat
+    oneside, % einseitiges Dokument
+    titlepage, % es wird eine Titelseite verwendet
+    parskip=half, % Abstand zwischen Absätzen (halbe Zeile)
+    headings=normal, % Größe der Überschriften verkleinern
+    listof=totoc, % Verzeichnisse im Inhaltsverzeichnis aufführen
+    bibliography=totoc, % Literaturverzeichnis im Inhaltsverzeichnis aufführen
+    index=totoc, % Index im Inhaltsverzeichnis aufführen
+    captions=tableheading, % Beschriftung von Tabellen unterhalb ausgeben
+    final % Status des Dokuments (final/draft)
+]{scrreprt}
+
+
+% Meta-Informationen -----------------------------------------------------------------------------------------
+%   Informationen über das Dokument, wie z.B. Titel, Autor, Matrikelnr. etc
+%   werden in der Datei Meta.tex definiert und können danach global
+%   verwendet werden.
+% -------------------------------------------------------------------------------------------------------------------
+\input{Meta}
+
+
+% benötigte Packages -----------------------------------------------------------------------------------------
+%   LaTeX-Packages, die benötigt werden, sind in die Datei Packages.tex
+%   "ausgelagert", um diese Vorlage möglichst übersichtlich zu halten.
+% -------------------------------------------------------------------------------------------------------------------
+\input{Packages}
+
+
+% Erstellung eines Index und Abkürzungsverzeichnisses/Glossars aktivieren ---------------------
+\makeindex{}
+\makenomenclature{}
+
+
+% Kopf- und Fußzeilen, Seitenränder etc. -----------------------------------------------------------------
+\input{Seitenstil}
+
+
+% eigene Definitionen für Silbentrennung -----------------------------------------------------------------
+\include{Silbentrennung}
+
+
+% eigene LaTeX-Befehle -------------------------------------------------------------------------------------
+\include{Befehle}
+
+
+% Das eigentliche Dokument --------------------------------------------------------------------------------
+%   Der eigentliche Inhalt des Dokuments beginnt hier. Die einzelnen Seiten
+%   und Kapitel werden in eigene Dateien ausgelagert und hier nur inkludiert.
+% ------------------------------------------------------------------------------------------------------------------
+\begin{document}
+
+
+% auch subsubsections nummerieren ---------------------------------------------------------------------
+\setcounter{secnumdepth}{3}
+% Nummerierungsebenen im Inhaltsverzeichnis
+\setcounter{tocdepth}{2}
+
+
+% Deckblatt und Abstract ohne Seitenzahl --------------------------------------------------------------
+\ofoot{}
+\include{Deckblatt}
+\include{Inhalt/Zitat}
+\include{Inhalt/Abstract}
+\ofoot{\pagemark \\[4ex]}
+
+
+% Seitennummerierung --------------------------------------------------------------------------------------
+%   Vor dem Hauptteil werden die Seiten in großen römischen Ziffern 
+%   nummeriert.
+% -----------------------------------------------------------------------------------------------------------------
+\pagenumbering{Roman}
+\phantomsection{} % Sorgt für korrekte Aufnahme des Inhaltsverzeichnisses in das Inhaltsverzeichnis
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
+\tableofcontents{}
+
+
+% Abkürzungsverzeichnis -----------------------------------------------------------------------------------
+\input{Inhalt/Glossar}
+% für korrekte Überschrift in der Kopfzeile
+\clearpage\markboth{\nomname}{\nomname} 
+\printnomenclature{}
+\label{sec:Glossar}
+
+
+% arabische Seitenzahlen im Hauptteil -------------------------------------------------------------------
+\clearpage{}
+\pagenumbering{arabic}
+
+
+% die Inhaltskapitel werden in "Inhalt.tex" inkludiert ----------------------------------------------------
+\input{Inhalt}
+
+
+\clearpage{}
+\pagenumbering{Roman}
+\setcounter{page}{7} %%% Dieser Pagecounter muss entsprechend der verbrauchten Seiten im Inhaltsverzeichnis angepasst werden. Endet das IHV bei Seite III, so muss hier 4 eingetragen werden
+
+
+% Literaturverzeichnis ---------------------------------------------------------------------------------------
+%   Das Literaturverzeichnis wird aus der BibTeX-Datenbank "Bibliographie.bib"
+%   erstellt.
+% ----------------------------------------------------------------------------------------------------------------
+\bibliography{Bibliographie} % Aufruf: bibtex Masterarbeit
+\bibliographystyle{natdin} % DIN-Stil des Literaturverzeichnisses
+
+
+% Restliche Verzeichnisse ---------------------------------------------------------------------------------
+\listoffigures{} % Abbildungsverzeichnis
+\listoftables{} % Tabellenverzeichnis
+\renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
+\lstlistoflistings{} % Listings-Verzeichnis
+
+
+% Index --------------------------------------------------------------------------------------------------------
+%   Zum Erstellen eines Index, die folgende Zeile auskommentieren.
+% ----------------------------------------------------------------------------------------------------------------
+%\printindex
+
+
+% Selbständigkeitserklärung ------------------------------------------------------------------------------
+\include{Erklaerung} 
+
+
+% Anhang -----------------------------------------------------------------------------------------------------
+%   Die Inhalte des Anhangs werden analog zu den Kapiteln inkludiert.
+%   Dies geschieht in der Datei "Anhang.tex".
+% ---------------------------------------------------------------------------------------------------------------
+\begin{appendix}
+    \clearpage{}
+    \pagenumbering{roman}
+    \chapter{Anhang}
+    \label{sec:Anhang}
+    % Rand der Aufzählungen in Tabellen anpassen
+    \setdefaultleftmargin{1em}{}{}{}{}{}
+    \input{Anhang}
+\end{appendix}
+
+\end{document}

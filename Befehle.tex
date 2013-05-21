@@ -1,0 +1,74 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX root =  Bachelorarbeit.tex
+% Eigene Befehle und typographische Auszeichnungen für diese
+
+
+% einfaches Wechseln der Schrift, z.B.: \changefont{cmss}{sbc}{n} ---------------------------
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+
+% Abkürzungen mit korrektem Leerraum -----------------------------------------------------------
+\newcommand{\ua}{\mbox{u.\,a.\ }}
+\newcommand{\zB}{\mbox{z.\,B.\ }}
+\newcommand{\dahe}{\mbox{d.\,h.\ }}
+\newcommand{\Vgl}{Vgl.\ }
+\newcommand{\bzw}{bzw.\ }
+\newcommand{\evtl}{evtl.\ }
+
+\newcommand{\abbildung}[1]{Abbildung~\ref{fig:#1}}
+
+\newcommand{\bs}{$\backslash$}
+
+
+% erzeugt ein Listenelement mit fetter Überschrift ------------------------------------------------
+\newcommand{\itemd}[2]{\item{\textbf{#1}}\\{#2}}
+
+
+% einige Befehle zum Zitieren -------------------------------------------------------------------------
+\newcommand{\Zitat}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}{\citep*{#2}}{\citep*[#1]{#2}}}
+\newcommand{\ZitatSpezial}[3]{\citep*[#1][#2]{#3}}
+\newcommand{\ZitatSpeziale}[2]{\citep*[#1][]{#2}}
+
+
+% zum Ausgeben von Autoren
+\newcommand{\AutorName}[1]{\textsc{#1}}
+\newcommand{\Autor}[1]{\AutorName{\citeauthor{#1}}}
+
+
+% verschiedene Befehle um Wörter semantisch auszuzeichnen -------------------------------
+\newcommand{\NeuerBegriff}[1]{\textbf{#1}}
+
+\newcommand{\Fachbegriff}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}{\textit{#2}\xspace}{\textit{#2}\xspace\footnote{#1}\nomenclature{#2}{#1}}}
+
+\newcommand{\FachbegriffSpezial}[4]{\textit{#4}\footnote{#3}\label{fn:#1}\nomenclature{#4}{#2. Siehe auch Fu{\ss}zeile auf Seite~\pageref{fn:#1}.}}
+
+\newcommand{\FachbegriffSpezialB}[5]{\textit{#5}\footnote{#3}\label{fn:#1}\nomenclature{#4}{#2. Siehe auch Fu{\ss}zeile auf Seite~\pageref{fn:#1}.}}
+
+
+% Beträge mit Währung ---------------------------------------------------------------------------------
+\newcommand{\Betrag}[2][general]{#2\,\ifthenelse{\equal{#1}{dollar}}{\$}{}\ifthenelse{\equal{#1}{euro}}{€}{}\ifthenelse{\equal{#1}{yen}}{¥}{}\ifthenelse{\equal{#1}{cent}}{¢}{}\ifthenelse{\equal{#1}{pound}}{£}{}\ifthenelse{\equal{#1}{peso}}{₱}{}\ifthenelse{\equal{#1}{baht}}{฿}{}\ifthenelse{\equal{#1}{franc}}{₣}{}\ifthenelse{\equal{#1}{lira}}{₤}{}\ifthenelse{\equal{#1}{drachma}}{₯}{}\ifthenelse{\equal{#1}{pfennig}}{₰}{}\ifthenelse{\equal{#1}{general}}{¤}{}}
+
+
+% Sonstiges -----------------------------------------------------------------------------------------------
+\newcommand{\Eingabe}[1]{\texttt{#1}}
+\newcommand{\Code}[1]{\texttt{#1}}
+\newcommand{\Datei}[1]{\texttt{#1}}
+
+\newcommand{\Datentyp}[1]{\textsf{#1}}
+\newcommand{\XMLElement}[1]{\textsf{#1}}
+\newcommand{\Webservice}[1]{\textsf{#1}}
+
+
+% Beschriftung von Tabellen und Bildern ändern --------------------------------------------------
+\addto\captionsngerman{
+	\renewcommand{\figurename}{Abb.}
+	\renewcommand{\tablename}{Tab.}
+}
+
+
+% Spaltendefinition rechtsbündig mit definierter Breite --------------------------
+\newcolumntype{w}[1]{>{\raggedleft\hspace{0pt}}p{#1}}
+
+
+% Linksbündige Tabellenspalten mit tabularx
+\newcolumntype{y}[1]{>{\RaggedRight\arraybackslash\hsize=#1\hsize}X}

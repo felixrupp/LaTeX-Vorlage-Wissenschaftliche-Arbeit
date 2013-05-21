@@ -1,0 +1,59 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX root =  ../Bachelorarbeit.tex
+\chapter{Fazit und kritische Bewertung}
+\label{cha:Fazit}
+
+
+\section{Das Ergebnis}
+\label{sec:Ergebnis}
+
+Der Relaunch des gesamten Webauftritts von HIT RADIO FFH erfolgte am 24.\,Juli 2011, mit dem auch der neue Webradio-Player zum ersten Produktiveinsatz gelangte. In Abbildung~\ref{fig:FfhWebradioEndversion} ist die Webradio-Player-Extension im Live-Einsatz auf \href{http://webradio.ffh.de/}{webradio.ffh.de} zu sehen. 
+
+%% Screenshot der Endversion
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=\textwidth]{Fazit/FfhWebradioEndversion.png}
+		\caption[FFH Webradio-Player im Live-Einsatz]{Der FFH Webradio-Player im Live-Einsatz}
+		\label{fig:FfhWebradioEndversion}
+	\end{center}
+\end{figure}
+
+Die grunds\"atzliche Entscheidung, bei der Extension-Entwicklung auf die Frame\-works Extbase und Fluid zu setzen, hat sich als absolut richtig erwiesen. Trotz der vielen Kinderkrankheiten und der unvollst\"andigen Implementation vieler Funktionen ist die anwendungsdom\"anen-getriebene Herangehensweise von Extbase bzw. FLOW3 ein deutlicher Schritt in eine einfachere Richtung der Entwicklung. 
+
+Der Webradio-Player l\"auft seit dem Relaunch nahezu fehlerfrei und ben\"otigte danach nur kleine Anpassungen wegen Schnittstellen\"anderungen des Stream-Providers Nacamar.
+
+
+\newpage
+
+\section{Die Bewertung der Frameworks Extbase und Fluid}
+\label{sec:BewertungFrameworks}
+
+
+Das bei der Radio/Tele FFH GmbH im Zuge des Relaunches zum Einsatz kommende Content Management System TYPO3 bildete die Basis der Extension-Entwicklung w\"ahrend dieser Arbeit. Aufgrund der angepriesenen Zukunftssicherheit wurde zudem entschieden, alle Extensions mit denen am Markt neu eingef\"uhrten Frameworks Extbase und Fluid zu entwickeln. Sowohl Extbase als MVC und Domain-Driven Design basiertes PHP-Framework, als auch Fluid als XML basierte Templating-Engine vereinen das gemeinsame Prinzip »Convention over Configuration«. Dieses Prinzip stellt viele Entwickler vor die gro{\ss}e Herausforderung, ihre bisherigen Gewohnheiten beim Entwickeln von Software zu \"uberdenken.
+
+Die vielen zun\"achst \"ubertrieben erscheinenden Konventionen beim Programmieren mit Extbase und Fluid haben schlussendlich trotz vieler Zweifel erm\"oglicht, dass drei Entwickler parallel an verschiedenen Extensions arbeiten konnten, auch wenn sie nicht am urspr\"unglichen Planungsprozess beteiligt waren. Einzig durch die strengen Konventionen in der Programmierung gelingt es, sich ohne gro{\ss}e Probleme in andere Extensions einzulesen. So war es beispielsweise m\"oglich, bestimmte Quellcode-Fragmente schnell in andere Extensions zu portieren, ohne viel am bereits vorhandenen Code \"andern zu m\"ussen.
+
+Die Templating-Engine Fluid \"ubernimmt diese hervorragenden Eigenschaften bei der Umsetzung in der View-Ebene der Extensions. Als XML-basierte Templating-Engine ist sie flexibel einsetzbar, erzeugt validen XHTML-Code und ist durch ihre Viewhelper theoretisch unendlich erweiterbar. Die bereits implementierten Viewhelper zeugen von der Macht, die von dieser Engine ausgeht. Aus diesem Grund ist es schade, dass bisher nur Basisfunktionen in Viewhelpern vorliegen. Geht es darum, exotischere Logiken in Viewhelpern zu verwenden, so ist man leider darauf angewiesen, diese selbst zu programmieren. Hierdurch geht ein nicht unerheblicher Teil an Entwicklungszeit verloren, weil die Rahmenbedingungen f\"ur die Umsetzung TYPO3 interner Funktionen leider meistens schlecht sind. Es fehlt an Dokumentationen der TYPO3 Funktionalit\"aten, aber auch an M\"oglichkeiten, diese in Viewhelpern zu realisieren. Aus diesem Grund ist man auch hier stark auf die Community im Internet angewiesen. Den Hauptanteil an Informationen bezieht man von anderen Entwicklern, die sich die L\"osungen meist umst\"andlich durch \Fachbegriff[Heuristische Methode, bei der durch Versuch und Irrtum eine L\"osung gefunden wird.]{trial \& error} erarbeitet haben.
+
+
+Theoretisch l\"asst sich Fluid mit jedem verf\"ugbaren PHP-Framework verwenden. So kann eine simple Webseite auch komplett autark ohne Content Management System aufgebaut werden.
+
+
+Zusammenfassend bleibt zu sagen, dass sowohl Extbase als auch Fluid ihren Weg in die Welt von TYPO3 gefunden haben. Die beiden alternativen Frameworks geben einen Vorgeschmack auf die Entwicklung mit TYPO3 v5 und FLOW3 und helfen Entwicklern schon heute sich auf die Portierung ihrer Extensions vorzubereiten. F\"ur den Autor als Neueinsteiger in der Extension-Entwicklung boten die beiden Werkzeuge viele neue und intuitive Wege, an die Entwicklung von Software heranzugehen. Nicht zuletzt ist hervorzuheben, dass die neuartigen Ans\"atze der Entwicklung, wie etwa das Domain-Driven Design und Convention over Configuration, viel Erleichterung in den Alltag eines Software-Entwicklers bringen k\"onnen, sofern dieser sich darauf einl\"asst.
+
+
+
+\section{Ein Ausblick}
+\label{sec:EinAusblick}
+
+Es hat sich gezeigt, dass die Entwicklung der Frameworks Extbase und Fluid st\"andig voranschreitet, weshalb es in unregelm\"a{\ss}igen Abst\"anden sinnvoll ist, die Webradio-Player-Extension zu aktualisieren und Neuerungen direkt zu implementieren. Dadurch ist eine sp\"atere Umsetzung in FLOW3 f\"ur TYPO3 Version 5 einfacher zu realisieren. 
+
+Bereits im Verlaufe der Erstellung dieser Arbeit ergaben sich \"Anderungen in Extbase, die dazu f\"uhrten, dass die Methode zum Instanziieren von Repository-Objekten ge\"andert wurde. Fr\"uher geschah dies \"uber eine \FachbegriffSpezial{Factory}{Entwurfsmuster, wirkt als Hilfsmittel zur Erzeugung von Produkten und Objekten}{»Eine Factory ist ein Hilfsmittel zur Erzeugung von Produkten und Objekten, unabhängig von konkreten Klassen. Sie wird verwendet, wenn die Instanziierung nur über den new()-Operator nicht möglich oder nicht sinnvoll ist, zum Beispiel wenn das Objekt schwierig zu konstruieren ist oder vorher konfiguriert werden muss. [\dots] Factory-Methoden sind statische Methoden zur Erzeugung von Objekten des eigenen Klassentyps. Ein Singleton kann zum Beispiel als Spezialfall einer Klasse mit einer Factory-Methode angesehen werden.« \ZitatSpezial{Vgl.}{Abschnitt „Factory“}{horn:Patterns}}{Factory}-Methode der TYPO3 Bibliothek \Code{t3lib\_div}. Mittlerweile wird ein Repository \"uber eine \FachbegriffSpezial{DependencyInjection}{Entwurfsmuster, soll helfen Abh\"angigkeiten eines Objektes einfacher aufzul\"osen}{»Dependency Injection ist ein Entwurfsmuster (Design Pattern), dass helfen soll, Abhängigkeiten eines Objektes in der objekt-orientierten Programmierung einfacher aufzulösen. Es findet eine Umkehr der Steuerung (Inversion of Control) statt, um das Objekt von unnötigen Verbindungen zu seiner Umwelt zu befreien, die es nur für die Auflösung von Abhängigkeiten, nicht aber für seine eigentliche Aufgabe benötigt. Die Verantwortung für das Auflösen der Abhängigkeiten wird aus dem Objekt in das umliegende Framework, in unserem Falle Extbase, verlagert.« \Zitat[]{oertel:DependencyInjection}}{Extbase Dependency Injection} erzeugt.
+
+Durch die grundverschiedenen Ans\"atze beider Varianten ist schnell erkennbar, dass mit der Entwicklung Schritt gehalten werden muss, damit die eigenen Extensions zukunftssicher bleiben. Aus diesem Grund werden alle bei der Radio/Tele FFH GmbH entwickelten Extensions -- so auch der Webradio-Player -- st\"andig auf dem neusten Entwicklungsstand gehalten. 
+
+Einer Portierung auf FLOW3 st\"unde somit nichts im Wege.
+
+
+
+

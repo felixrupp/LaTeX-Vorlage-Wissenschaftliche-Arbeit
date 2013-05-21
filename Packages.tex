@@ -1,0 +1,269 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX root =  Bachelorarbeit.tex
+
+% Anpassung des Seitenlayouts ---------------------------------------------------
+%   siehe Seitenstil.tex
+% -----------------------------------------------------------------------------------------
+\usepackage[
+    automark, % Kapitelangaben in Kopfzeile automatisch erstellen
+    headsepline, % Trennlinie unter Kopfzeile
+    ilines % Trennlinie linksbündig ausrichten
+]{scrpage2}
+
+
+% Anpassung an Landessprache -------------------------------------------------
+\usepackage[ngerman]{babel}
+
+
+% Umlaute ------------------------------------------------------------------------------
+%   Umlaute/Sonderzeichen wie äüöß direkt im Quelltext verwenden (CodePage).
+%   Erlaubt automatische Trennung von Worten mit Umlauten.
+% -----------------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp} % Euro-Zeichen etc.
+
+
+% Schrift --------------------------------------------------------------------------------
+\usepackage{lmodern} % bessere Fonts
+\usepackage{relsize} % Schriftgröße relativ festlegen
+
+
+% Bessere Unterstreichungen ---------------------------------------------
+\usepackage[normalem]{ulem}
+
+
+% Grafiken -----------------------------------------------------------------------------
+% Einbinden von JPG-Grafiken ermöglichen
+\usepackage[dvips,final]{graphicx}
+% hier liegen die Bilder des Dokuments
+\graphicspath{{Bilder/}}
+
+
+% Befehle aus AMSTeX für mathematische Symbole z.B. \boldsymbol \mathbb
+\usepackage{amsmath,amsfonts}
+
+
+% Eurozeichen benutzen ------------------------------------------------------------
+\usepackage{eurosym}
+
+
+% für Index-Ausgabe mit \printindex -----------------------------------------------
+\usepackage{makeidx}
+
+
+% Einfache Definition der Zeilenabstände und Seitenränder etc. ------------
+\usepackage{setspace}
+\usepackage{geometry}
+
+
+% Symbolverzeichnis ------------------------------------------------------------------
+%
+%   Symbolverzeichnisse bequem erstellen. Beruht auf MakeIndex:
+%     makeindex.exe %Name%.nlo -s nomencl.ist -o %Name%.nls
+%   erzeugt dann das Verzeichnis unter WIndows. Dieser Befehl kann z.B. im TeXnicCenter
+%   als Postprozessor eingetragen werden, damit er nicht ständig manuell
+%   ausgeführt werden muss.
+%
+%   Unter Unix bitte einfach das mitgelieferte Shellskript "makemyindex" nutzen.
+%
+%   Die Definitionen werden im Fließtext mit den Befehlen:
+%               - \Fachbegriff
+%               - \FachbegriffSpezial
+%               - \FachbegriffSpezialB
+%    erzeugt oder separat in die Datei "Glossar.tex" eingetragen.
+% -------------------------------------------------------------------------------------------
+\usepackage[intoc]{nomencl}
+\let\abbrev\nomenclature
+\renewcommand{\nomname}{Abkürzungsverzeichnis und Glossar}
+\setlength{\nomlabelwidth}{.25\hsize}
+\renewcommand{\nomlabel}[1]{#1 \dotfill}
+\setlength{\nomitemsep}{-\parsep}
+
+
+% zum Umfließen von Bildern ---------------------------------------------------------
+\usepackage[vflt]{floatflt}
+\usepackage{subfigure}
+
+% zum Einbinden von Programmcode -----------------------------------------------
+\usepackage{listings}
+\usepackage{xcolor} 
+\definecolor{hellgelb}{rgb}{1,1,0.9}
+\definecolor{colKeys}{rgb}{0.8,0,0.5}
+\definecolor{colIdentifier}{rgb}{0.6,0,0.3}
+\definecolor{colComments}{rgb}{0,0.5,0}
+\definecolor{colString}{rgb}{0,0,1}
+
+\lstset{
+    float=htbp,
+    basicstyle=\ttfamily\color{black}\small\smaller,
+    identifierstyle=,%\color{colIdentifier},
+    keywordstyle=\color{colKeys}\bfseries,
+    stringstyle=\color{colString},
+    commentstyle=\color{colComments},
+    columns=flexible,
+    tabsize=4,
+    frame=single,
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    backgroundcolor=\color{hellgelb},
+    breakautoindent=true,
+    escapeinside={(*}{*)},
+    literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1 {ß}{{\ss}}2 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1 {µ}{\textmu}1
+ }
+
+% --------------------------------------------------------------------------------------------
+% 
+% Eigene Definitionen für Quelltext-Stile
+%
+% Define CSS:
+\lstdefinelanguage{CSS}{
+    morestring=[b]',
+    morestring=[b]",
+    comment=[l]{/*}{*/},
+    sensitive=false,
+    morekeywords={accelerator,adjust,after,align,attachment,azimuth,background,before,behavior,binding,border,bottom,bottomright,bottomleft,break,caption-side,char,clear,clip,color,colors,cue,cursor,collapse,decoration,direction,display,elevation,empty-cells,family,filter,float,flow,focus,font,grid,height,image,increment,indent,input,inside,ime-mode,include-source,justify,last,layer,left,letter,line,list,margin,marker,marks,max,min,mode,modify,moz,offsett,opacity,orphans,outline,overflow,overflow-X,overflow-Y,overhang,position,position-x,position-y,padding,page,pause,pitch,play-during,position,quotes,radius,range,repeat,replace,reset,richness,right,ruby,set-link-source,select,shadow,size,spacing,speak,speak-header,speak-numeral,speak-punctuation,speech-rate,stress,stretch,style,table-layout,text,transform,text-autospace,text-kashida-space,top,topleft,topright,type,underline,unicode-bidi,use-link-source,user,variant,vertical,visibility,voice-family,volume,white-space,weight,widows,width,word,wrap,word-wrap,writing-mode,z-index,zoom}
+}
+
+
+% Define JavaScript:
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{colKeys}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+% Define TypoScript:
+\lstdefinelanguage{TypoScript}{
+  keywords=[1]{PAGE, HTML, TEXT, COA, COA\_INT, FILE, IMAGE, IMG\_RESOURCE, CLEARGIF, CONTENT, RECORDS, HMENU, CTABLE, OTABLE, COLUMNS, HRULER, IMGTEXT, CASE, LOAD\_REGISTER, RESTORE\_REGISTER, FORM, SEARCHRESULT, USER, USER\_INT, TEMPLATE, FLUIDTEMPLATE, MULTIMEDIA, SVG, EDITPANEL, GIFBUILDER, GMENU, TMENU, TMENUITEM, IMGMENU, IMGMENUITEM, JSMENU, JSMENUITEM, BOX},
+  keywordstyle=[1]{\color{blue}\bfseries},
+  keywords=[2]{plugin, view, page, file, text, config},
+  keywordstyle=[2]{\color{blue}\bfseries},
+  keywords=[3]{EXT},
+  keywordstyle=[3]{\color{blue}\bfseries},
+  sensitive=true,
+  comment=[l]{\#\ }
+}
+
+% PHP5 dialect 
+\lstdefinelanguage[5]{PHP}[]{PHP} {
+  morekeywords={
+  %--- class and exceptions keywords 
+  class,static,private,public,abstract,interface,const,function,require_once,final,new,extends,implements,
+  %--- additional array functions 
+  array_combine,array_diff_uassoc,array_udiff,array_udiff_assoc,% 
+  array_udiff_uassoc,array_walk_recursive,array_uintersect_assoc,% 
+  array_usintersect_uassoc,array_uintersect,% 
+  %--- string functions 
+  str_split, strpbrk,substr_compare 
+  %--- Date and time functions 
+  idate,date_sunset,date_sunrise,time_nanosleep,
+  %--- return
+  return
+  } 
+} 
+
+
+% Fluid dialect 
+\lstdefinelanguage[Fluid]{HTML}[]{HTML} {
+  morekeywords={if, for, each, as, condition, controller, arguments, image, link, action, class} 
+} 
+
+
+% URL verlinken, lange URLs umbrechen etc. -------------------------------------
+\usepackage{url}
+
+
+% natbib einbinden -----------------------------------------------------------------------
+\usepackage[square,numbers,sort&compress]{natbib}
+
+
+% PDF-Optionen -------------------------------------------------------------------------
+\usepackage[
+    bookmarks,
+    bookmarksopen=true,
+    colorlinks=true,
+% diese Farbdefinitionen zeichnen Links im PDF farblich aus
+    linkcolor=red, % einfache interne Verknüpfungen
+    anchorcolor=black,% Ankertext
+    citecolor=blue, % Verweise auf Literaturverzeichniseinträge im Text
+    filecolor=magenta, % Verknüpfungen, die lokale Dateien öffnen
+    menucolor=red, % Acrobat-Menüpunkte
+    urlcolor=cyan, 
+%
+% diese Farbdefinitionen sollten für den Druck verwendet werden (alles schwarz):
+%
+    %linkcolor=black, % einfache interne Verknüpfungen
+    %anchorcolor=black, % Ankertext
+    %citecolor=black, % Verweise auf Literaturverzeichniseinträge im Text
+    %filecolor=black, % Verknüpfungen, die lokale Dateien öffnen
+    %menucolor=black, % Acrobat-Menüpunkte
+    %urlcolor=black, 
+%
+    backref,
+    plainpages=false, % zur korrekten Erstellung der Bookmarks
+    pdfpagelabels, % zur korrekten Erstellung der Bookmarks
+    hypertexnames=false, % zur korrekten Erstellung der Bookmarks
+    linktocpage % Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
+]{hyperref}
+% Befehle, die Umlaute ausgeben, führen zu Fehlern, wenn sie hyperref als Optionen übergeben werden
+\hypersetup{
+    pdftitle={\titel \untertitel},
+    pdfauthor={\autor},
+    pdfcreator={\creator},
+    pdfsubject={\titel \untertitel},
+    pdfkeywords={\keywords},
+}
+
+% Paket zum sauberen Einbauen von externen PDF-Dateien -----------------
+\usepackage[final]{pdfpages}
+
+
+% fortlaufendes Durchnummerieren der Fußnoten -------------------------------
+\usepackage{chngcntr}
+
+
+% schönere Tabellen --------------------------------------------------------------------
+\usepackage{tabularx}
+\usepackage{multirow}
+
+
+% für lange Tabellen ---------------------------------------------------------------------
+\usepackage{longtable}
+\usepackage{ltxtable}
+\usepackage{filecontents}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{lscape}
+
+
+% Rotation von Elementen -------------------------------------------------------
+\usepackage{rotating}
+
+
+% Formatierung von Listen ändern --------------------------------------------------
+\usepackage{paralist}
+\usepackage{enumitem}
+
+
+% bei der Definition eigener Befehle benötigt -------------------------------------
+\usepackage{ifthen}
+\usepackage{forloop}
+
+
+% definiert u.a. die Befehle \todo und \listoftodos --------------------------------
+\usepackage{todonotes}
+
+
+% sorgt dafür, dass Leerzeichen hinter parameterlosen Makros nicht als Makroendezeichen interpretiert werden
+\usepackage{xspace}
