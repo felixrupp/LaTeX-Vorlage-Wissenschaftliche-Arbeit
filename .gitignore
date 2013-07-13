@@ -1,5 +1,6 @@
 *.aux
 *.bbl
+*.bcf
 *.blg
 *.brf
 *.idx
@@ -16,3 +17,5 @@
 *.fls
 *.ind
 *.fdb_latexmk
+*.run.xml
+

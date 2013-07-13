@@ -68,6 +68,12 @@
 % eigene LaTeX-Befehle ---------------------------------------------------------------------------------
 \include{Befehle}
 
+% Literaturverzeichnis ---------------------------------------------------------------------------------
+%   Das Literaturverzeichnis wird aus der BibTeX-Datenbank "Bibliographie.bib"
+%   erstellt.
+% ------------------------------------------------------------------------------------------------------
+\bibliography{Bibliographie} % Aufruf: biber Bachelorarbeit
+%\defbibheading{bibliography}{\chapter*{\bibliographyheading}}
 
 % Das eigentliche Dokument -----------------------------------------------------------------------------
 %   Der eigentliche Inhalt des Dokuments beginnt hier. Die einzelnen Seiten
@@ -126,8 +132,8 @@
 %   Das Literaturverzeichnis wird aus der BibTeX-Datenbank "Bibliographie.bib"
 %   erstellt.
 % ------------------------------------------------------------------------------------------------------
-\bibliography{Bibliographie} % Aufruf: bibtex Masterarbeit
-\bibliographystyle{natdin} % DIN-Stil des Literaturverzeichnisses
+%\bibliography{Bibliographie} % Aufruf: bibtex Masterarbeit
+%\bibliographystyle{natdin} % DIN-Stil des Literaturverzeichnisses
 
 
 % Restliche Verzeichnisse ------------------------------------------------------------------------------
@@ -136,6 +142,18 @@
 \renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
 \lstlistoflistings{} % Listings-Verzeichnis
 
+% Ausgabe des Literaturverzeichnisses
+\setlength\bibitemsep{2\itemsep} % Verdoppeln des Abstandes zwischen den Einträgen
+\setlength{\bibhang}{0.2cm} % Einzug nach erster Zeile eines Eintrags
+
+% Fette Labels der Einträge
+\xpretobibmacro{author}{\mkbibbold\bgroup}{}{}
+\xapptobibmacro{author}{\egroup}{}{}
+\xpretobibmacro{bbx:editor}{\mkbibbold\bgroup}{}{}
+\xapptobibmacro{bbx:editor}{\egroup}{}{}
+\renewcommand*{\labelnamepunct}{\mkbibbold{\addcolon\space}} 
+
+\printbibliography % Literaturverzeichnis
 
 % Index ------------------------------------------------------------------------------------------------
 %   Zum Erstellen eines Index, die folgende Zeile auskommentieren.

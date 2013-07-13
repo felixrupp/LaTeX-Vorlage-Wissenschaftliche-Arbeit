@@ -184,7 +184,11 @@
 
 
 % natbib einbinden -----------------------------------------------------------------------
-\usepackage[square,numbers,sort&compress]{natbib}
+%\usepackage[square,numbers,sort&compress]{natbib}
+
+% biblatex einbinden -----------------------------------------------------------------------
+\usepackage[backend=biber,style=authoryear-ibid,hyperref=true]{biblatex}
+\usepackage[babel,german=quotes]{csquotes}
 
 
 % PDF-Optionen -------------------------------------------------------------------------
@@ -209,7 +213,7 @@
     %menucolor=black, % Acrobat-Menüpunkte
     %urlcolor=black, 
 %
-    backref,
+%    backref, % muss auf Grund von biblatex deaktiviert werden
     plainpages=false, % zur korrekten Erstellung der Bookmarks
     pdfpagelabels, % zur korrekten Erstellung der Bookmarks
     hypertexnames=false, % zur korrekten Erstellung der Bookmarks
@@ -266,3 +270,6 @@
 
 % sorgt dafür, dass Leerzeichen hinter parameterlosen Makros nicht als Makroendezeichen interpretiert werden
 \usepackage{xspace}
+
+% wird für fette Labels im Literaturverzeichnis benötigt
+\usepackage{xpatch}
