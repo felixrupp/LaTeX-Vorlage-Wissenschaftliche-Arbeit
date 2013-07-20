@@ -24,8 +24,8 @@
 \newcommand{\itemd}[2]{\item{\textbf{#1}}\\{#2}}
 
 
-% einige Befehle zum Zitieren ---------------------------------------------------------------------------
-\newcommand{\Zitat}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}{\parencite{#2}}{\parencite[#1]{#2}}}
+% einige Befehle zum Zitieren -------------------------------------------------------------------------
+\newcommand{\Zitat}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}{\parencite{#2}}{\parencite[][#1]{#2}}}
 \newcommand{\ZitatSpezialA}[3]{\parencite[#1][#2]{#3}}
 \newcommand{\ZitatSpezialB}[2]{\parencite[#1][]{#2}}
 

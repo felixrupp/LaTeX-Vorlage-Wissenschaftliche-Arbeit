@@ -65,3 +65,15 @@
 % Fußnoten fortlaufend durchnummerieren
 \counterwithout{footnote}{chapter}
 
+% Biblatex Einstellungen -------------------------------------------------------------------------------
+% Anpassung des Verzeichnisses
+\setlength\bibitemsep{2\itemsep} % Verdoppeln des Abstandes zwischen den Einträgen
+\setlength{\bibhang}{0.2cm} % Einzug nach erster Zeile eines Eintrags
+
+% Fette Labels der Einträge
+\xpretobibmacro{author}{\mkbibbold\bgroup}{}{}
+\xapptobibmacro{author}{\egroup}{}{}
+\xpretobibmacro{bbx:editor}{\mkbibbold\bgroup}{}{}
+\xapptobibmacro{bbx:editor}{\egroup}{}{}
+\renewcommand*{\labelnamepunct}{\mkbibbold{\addcolon\space}}
+
