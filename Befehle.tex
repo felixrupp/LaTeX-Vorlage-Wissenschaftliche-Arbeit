@@ -25,9 +25,9 @@
 
 
 % einige Befehle zum Zitieren ---------------------------------------------------------------------------
-\newcommand{\Zitat}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}{\citep*{#2}}{\citep*[#1]{#2}}}
-\newcommand{\ZitatSpezialA}[3]{\citep*[#1][#2]{#3}}
-\newcommand{\ZitatSpezialB}[2]{\citep*[#1][]{#2}}
+\newcommand{\Zitat}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}{\citep{#2}}{\citep[#1]{#2}}}
+\newcommand{\ZitatSpezialA}[3]{\citep[#1][#2]{#3}}
+\newcommand{\ZitatSpezialB}[2]{\citep[#1][]{#2}}
 
 
 % zum Ausgeben von Autoren
